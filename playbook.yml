@@ -4,11 +4,11 @@
   gather_facts: no
  
   tasks:
-    - name: run show version on remote devices
+    - name: run show interface status on remote devices
       cisco.ios.ios_command:  
         commands: show interface status
       register: status_info  
 
-    - name: Write Versions
+    - name: Write Interface Status
       debug:
-         msg: "{{status_info}}"
+         msg: "{{status_info.stdout_lines}}"
