@@ -1,0 +1,14 @@
+---
+- name: Show Interface Status
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: run show version on remote devices
+      cisco.ios.ios_command:  
+        commands: show interface status
+      register: status_info  
+
+    - name: Write Versions
+      debug:
+         msg: "{{status_info}}"
